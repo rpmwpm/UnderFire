@@ -1,4 +1,4 @@
-﻿using UnderFire.Patch;
+using UnderFire.Patch;
 using System;
 using System.Reflection;
 using SPT;
@@ -18,7 +18,7 @@ using EFT.HealthSystem;
 
 namespace UnderFire
 {
-    [BepInPlugin("com.rpmwpm.UnderFire", "rpmwpm.UnderFire", "0.0.1")]
+    [BepInPlugin("com.rpmwpm.UnderFire", "rpmwpm.UnderFire", "2.0.1")]
     public class Plugin : BaseUnityPlugin
     {
         internal static float interval = 0f;
@@ -103,7 +103,7 @@ namespace UnderFire
         {
             logSource = Logger;
             SetupConfigOptions();
-            GClass876.OnShoot += CheckFiredBullet;
+            GClass897.OnShoot += CheckFiredBullet;
             ConsoleScreen.Processor.RegisterCommandGroup<UnderFire.DebugCommands>();
             new UnderFirePatch().Enable();
         }
@@ -134,7 +134,7 @@ namespace UnderFire
             interval = 0f;
         }
 
-        internal void CheckFiredBullet(SonicBulletSoundPlayer.GClass877 sonicInfo)
+        internal void CheckFiredBullet(SonicBulletSoundPlayer.GClass898 sonicInfo)
         {
             if (!SuppressEnabled.Value) return;
             if (isAdrenalineActive) return;
@@ -169,8 +169,8 @@ namespace UnderFire
             isAdrenalineActive = true;
         }
 
-        protected class TunnelVision : ActiveHealthController.GClass2813, GInterface337, IEffect { }
-        internal class Tremor : ActiveHealthController.GClass2813, GInterface335, IEffect, GInterface305
+        protected class TunnelVision : ActiveHealthController.GClass3008, GInterface363, IEffect { }
+        internal class Tremor : ActiveHealthController.GClass3008, GInterface361, IEffect, GInterface331
         {
             public override float DefaultDelayTime
             {
@@ -179,10 +179,10 @@ namespace UnderFire
             }
             public override float DefaultResidueTime
             {
-                get { return ActiveHealthController.GClass2813.GClass2823_0.Tremor.DefaultResidueTime; }
+                get { return ActiveHealthController.GClass3008.GClass3019_0.Tremor.DefaultResidueTime; }
             }
         }
-        protected class PainKiller : ActiveHealthController.GClass2813, GInterface332, IEffect, GInterface306, GInterface308, GInterface304
+        protected class PainKiller : ActiveHealthController.GClass3008, GInterface358, IEffect, GInterface332, GInterface334, GInterface330
         {
             public string ItemTemplateId { get; set; }
             public float MaxDuration { get; set; }
